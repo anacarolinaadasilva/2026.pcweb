@@ -12,13 +12,10 @@ const add = (livros, livro) => {
 }
 
 /**
- * Função que retorna um livro pelo id
  * 
- * @param {*} livros - array de livros
- * @param {*} id
- * @returns livro Object
+ * @param {*} id 
  */
-const get = (livros, id) => livros.find(livro=>livro.id ==id)
+const get = id => livros.find(livro=>livro.id ==id)
 
 /**
  * Função que pesquisa livros em uma coleção
@@ -41,17 +38,9 @@ const listLivroByGenero = (livros, genero) =>
         livro.genero.toLowerCase().includes(genero.toLowerCase()))
 
 
-const markAsLido = (livros, id)=> {
-livros.forEach(livros, id => {
-   if(livro.id == id){
-      livro.lido = true
-      
-   }
-   });
-      
+const markAsLido = id => {
 
-   }
-
+}
 
 const remove = id => {
 
