@@ -168,19 +168,86 @@ test("encontrar pelo id", () => {
 
 test("deve marcar um livro como lido", () => {
 
-const livros = [
+    const livros = [
+        {
+            id: 1,
+            titulo: "JavaScript",
+            autor: "Autor A",
+            genero: "Programação",
+            paginas: 300,
+            lido: false
+        },
+        {
+            id: 2,
+            titulo: "HTML e CSS",
+            autor: "Autor B",
+            genero: "Web",
+            paginas: 250,
+            lido: false
+        }
+    ];
 
-{
-
-id: 1,
-
-titulo: "JavaScript",
-
-lido: true
-
-}];
 
 const resultado = markAsLido(livros, 1);
-expect(resultado[0].lido).toBe(true);
+const livroLido = get(resultado, 1)
+expect(livroLido.lido).toBe(true);
 
 }); 
+
+/*
+Testes do Filtrar Livros
+*/
+test("deve remover um livro pelo id", () => {
+
+    const livros = [
+        {
+            id: 1,
+            titulo: "JavaScript",
+            autor: "Autor A",
+            genero: "Programação",
+            paginas: 300,
+            lido: false
+        },
+        {
+            id: 2,
+            titulo: "HTML e CSS",
+            autor: "Autor B",
+            genero: "Web",
+            paginas: 250,
+            lido: true
+        }
+    ];
+
+    const resultado = remove(livros,1);
+
+    
+    expect(resultado).toHaveLength(1)
+});
+
+test("deve calcular estatisticas", () => {
+ const livros = [
+        {
+            id: 1,
+            titulo: "JavaScript",
+            autor: "Autor A",
+            genero: "Programação",
+            paginas: 300,
+            lido: false
+        },
+        {
+            id: 2,
+            titulo: "HTML e CSS",
+            autor: "Autor B",
+            genero: "Web",
+            paginas: 250,
+            lido: true
+        }
+    ];
+const resultado = estatistics(livros)
+//{totalLivros:2, livrosLidos:1, livrosNaoLidos:1, totalPaginas:550}
+expect(resultado.totalLivros).toBe(2);
+expect(resultado.livrosLidos).toBe(1);
+expect(resultado.livrosNaoLidos).toBe(1);
+expect(resultado.totalPaginas).toBe();
+
+});

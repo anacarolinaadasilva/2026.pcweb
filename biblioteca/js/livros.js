@@ -1,5 +1,7 @@
 const livros = []
 
+const listar = () => livros
+
 /**
  * Função para adicionar novos livros na coleção
  * @param {*} livros - array de livros
@@ -42,27 +44,29 @@ const listLivroByGenero = (livros, genero) =>
 
 
 const markAsLido = (livros, id)=> {
-livros.forEach(livros, id => {
-   if(livro.id == id){
-      livro.lido = true
-      
-   }
-   });
-      
-
-   }
-
-
-const remove = id => {
-
+    livros.forEach(livro => {
+        if(livro.id == id){
+            livro.lido = true
+        }
+    });  
+    return livros
 }
 
-const estatistics = () => {
+const remove = (livros, id) => livros.filter(livro=> livro.id != id)
 
+const estatistics = livros => { 
+    return  {
+    totalLivros: livros.length
+    , livrosLidos: livros.filter(livro => livro.lido ==true).length
+    , livrosNaoLidos: livros.filter(livro => livro.lido ==false).length
+    , totalPaginas: livros.reduce((total, livro) => total + livro.paginas, 0 )
+    }
 }
+
 
 // dá visibilidade a algumas funções do arquivo js.
-module.exports= {add
+module.exports= {listar
+    , add
     , remove
     , get
     , listLivroByTitulo
